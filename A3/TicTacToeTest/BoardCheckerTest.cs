@@ -42,6 +42,16 @@ public class BoardCheckerTest {
     }
 
     [Test]
+    public void DiagonalWinTest2() {
+        board.TryInsert(2, 0, PlayerIdentifier.Cross);
+        board.TryInsert(1, 1, PlayerIdentifier.Cross);
+        board.TryInsert(0, 2, PlayerIdentifier.Cross);
+
+        Assert.AreEqual(BoardState.Winner, boardChecker.CheckBoardState(board));
+    }
+    
+
+    [Test]
     public void InconclusiveTest() {
         board.TryInsert(0, 0, PlayerIdentifier.Cross);
 
