@@ -57,4 +57,29 @@ public class CursorTest {
             Assert.Fail("Cursor did not move right.");
         }
     }   
+    [Test]
+    public void BoundaryMovement() {
+        cursor.position.X = 2; 
+        int CurrentX = cursor.position.X;
+        cursor.MoveRight();
+        Assert.AreEqual(CurrentX, cursor.position.X);
+    }   
+    [Test]
+    public void CornerMovement() {
+        cursor.position.X = 2;
+        int CurrentX = cursor.position.X;
+        cursor.position.Y = 0;
+        int CurrentY = cursor.position.Y;
+        cursor.MoveRight();
+        cursor.MoveUp();
+        Assert.AreEqual((CurrentX, CurrentY), (cursor.position.X, cursor.position.Y));
+        
+    }   
+    [Test]
+    public void TransitionalMovement() {
+        cursor.MoveUp();
+        int CurrentX = cursor.position.X;
+        cursor.MoveUp();
+        Assert.AreEqual(CurrentX, cursor.position.X);
+    }   
 }
